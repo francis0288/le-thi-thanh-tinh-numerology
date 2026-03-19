@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Báo Cáo Thần Số Học — Lê Thị Thanh Tình</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:        #f0c040;
+      --gold-light:  #ffe080;
+      --gold-deep:   #d4a017;
+      --gold-glow:   #ffdd55;
+      --amber:       #ff9900;
+      --crimson:     #e84545;
+      --emerald:     #00c896;
+      --violet:      #9b5de5;
+      --sky:         #00b4d8;
+      --deep-bg:     #0a0f1e;
+      --mid-bg:      #111827;
+      --card-bg:     rgba(255,255,255,0.05);
+      --card-border: rgba(240,192,64,0.3);
+      --soft-white:  #f8f5ef;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--deep-bg);
+      color: var(--soft-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      background: radial-gradient(ellipse at 50% -10%, #2a1a00 0%, #1a0f00 35%, #0a0f1e 70%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0c040' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(240,192,64,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      animation: twinkle 3s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.2; transform: scale(1); }
+      to   { opacity: 1;   transform: scale(1.8); }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 40px;
+      margin-bottom: 28px;
+      position: relative;
+      background: rgba(240,192,64,0.08);
+      box-shadow: 0 0 20px rgba(240,192,64,0.2);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, var(--amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.04em;
+      position: relative;
+      margin-bottom: 12px;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(240,192,64,0.4));
+    }
+    .hero h1 span {
+      display: block;
+      font-size: 0.52em;
+      letter-spacing: 0.14em;
+      -webkit-text-fill-color: rgba(248,245,239,0.55);
+      filter: none;
+      margin-top: 8px;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(248,245,239,0.65);
+      margin-bottom: 40px;
+      letter-spacing: 0.06em;
+    }
+    .hero-numbers {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-num {
+      background: rgba(240,192,64,0.1);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 12px rgba(240,192,64,0.15);
+    }
+    .hero-num:hover {
+      transform: scale(1.15);
+      background: rgba(240,192,64,0.25);
+      box-shadow: 0 0 28px rgba(240,192,64,0.5);
+    }
+    .hero-num .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold-light);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hero-num .lbl {
+      font-size: 0.5rem;
+      color: rgba(248,245,239,0.5);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 3px;
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(248,245,239,0.35);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint svg { width: 18px; height: 18px; }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    section:nth-child(even) { background: rgba(255,255,255,0.015); }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 40px;
+      position: relative;
+      padding-bottom: 16px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--amber), transparent);
+      border-radius: 2px;
+    }
+
+    /* ─── CARDS GRID ─── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.5), 0 0 30px rgba(240,192,64,0.1);
+      border-color: rgba(240,192,64,0.6);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--amber), var(--gold-light));
+    }
+    .card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold-deep), var(--amber));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.35rem;
+      box-shadow: 0 4px 16px rgba(212,160,23,0.4);
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: rgba(248,245,239,0.78);
+      line-height: 1.78;
+    }
+    .card .tag {
+      display: inline-block;
+      background: rgba(240,192,64,0.12);
+      border: 1px solid rgba(240,192,64,0.35);
+      color: var(--gold);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    /* ─── HIGHLIGHT BOX ─── */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(240,192,64,0.08), rgba(255,153,0,0.06));
+      border: 1px solid rgba(240,192,64,0.35);
+      border-radius: 18px;
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--amber), transparent);
+    }
+    .highlight-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .highlight-box p {
+      font-size: 0.92rem;
+      color: rgba(248,245,239,0.82);
+      line-height: 1.82;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), var(--amber), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(240,192,64,0.2), 0 0 16px rgba(240,192,64,0.5);
+    }
+    .timeline-item h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold-light);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .timeline-item p {
+      font-size: 0.9rem;
+      color: rgba(248,245,239,0.75);
+      line-height: 1.78;
+    }
+
+    /* ─── ADVICE GRID ─── */
+    .advice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .advice-item {
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 14px 14px 0;
+      padding: 20px 22px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .advice-item:hover {
+      transform: translateX(4px);
+      box-shadow: -4px 0 20px rgba(240,192,64,0.2);
+    }
+    .advice-item.warning { border-left-color: var(--crimson); }
+    .advice-item.positive { border-left-color: var(--emerald); }
+    .advice-item.violet   { border-left-color: var(--violet); }
+    .advice-item.sky      { border-left-color: var(--sky); }
+    .advice-item h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 7px;
+    }
+    .advice-item.warning h4 { color: #ff7070; }
+    .advice-item.positive h4 { color: var(--emerald); }
+    .advice-item.violet h4   { color: #c084fc; }
+    .advice-item.sky h4      { color: var(--sky); }
+    .advice-item p {
+      font-size: 0.85rem;
+      color: rgba(248,245,239,0.72);
+      line-height: 1.72;
+    }
+
+    /* ─── KY MON SECTION ─── */
+    .kymon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 680px) { .kymon-grid { grid-template-columns: 1fr; } }
+    .kymon-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(240,192,64,0.22);
+      border-radius: 16px;
+      padding: 26px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .kymon-card:hover {
+      border-color: rgba(240,192,64,0.5);
+      box-shadow: 0 8px 32px rgba(240,192,64,0.1);
+    }
+    .kymon-card h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold-light);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .kymon-card h4 span { font-size: 1.2rem; }
+    .kymon-card p {
+      font-size: 0.87rem;
+      color: rgba(248,245,239,0.75);
+      line-height: 1.78;
+    }
+
+    /* ─── TABLE ─── */
+    .kymon-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.87rem;
+    }
+    .kymon-table th {
+      background: rgba(240,192,64,0.14);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .kymon-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(248,245,239,0.8);
+    }
+    .kymon-table tr:last-child td { border-bottom: none; }
+    .kymon-table tr:hover td { background: rgba(240,192,64,0.04); }
+
+    /* ─── CONCLUSION ─── */
+    .conclusion {
+      background: linear-gradient(135deg, #1a0f00, #0a0f1e, #0f1a0a);
+      border: 1px solid rgba(240,192,64,0.4);
+      border-radius: 22px;
+      padding: 52px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(240,192,64,0.08);
+    }
+    .conclusion::before {
+      content: '✦';
+      position: absolute;
+      font-size: 14rem;
+      color: rgba(240,192,64,0.04);
+      top: -30px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .conclusion::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(240,192,64,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .conclusion h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 24px;
+    }
+    .conclusion p {
+      font-size: 0.96rem;
+      color: rgba(248,245,239,0.82);
+      max-width: 740px;
+      margin: 0 auto 18px;
+      line-height: 1.88;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 0.78rem;
+      color: rgba(248,245,239,0.28);
+      letter-spacing: 0.08em;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 52px 0;
+      color: rgba(240,192,64,0.45);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,192,64,0.4), transparent);
+    }
+
+    /* ─── YEAR COMPARISON CARDS ─── */
+    .year-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    @media (max-width: 680px) { .year-cards { grid-template-columns: 1fr; } }
+    .year-card {
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .year-card.year-2026 {
+      background: linear-gradient(135deg, rgba(0,200,150,0.1), rgba(0,180,216,0.06));
+      border: 1px solid rgba(0,200,150,0.35);
+    }
+    .year-card.year-2027 {
+      background: linear-gradient(135deg, rgba(155,93,229,0.1), rgba(232,69,69,0.06));
+      border: 1px solid rgba(155,93,229,0.35);
+    }
+    .year-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .year-card.year-2026 h3 { color: var(--emerald); }
+    .year-card.year-2027 h3 { color: #c084fc; }
+    .year-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .year-card ul li {
+      font-size: 0.87rem;
+      color: rgba(248,245,239,0.78);
+      line-height: 1.75;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-left: 18px;
+      position: relative;
+    }
+    .year-card ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .year-card ul li:last-child { border-bottom: none; }
+
+    /* ─── HEALTH WARNING ─── */
+    .health-box {
+      background: linear-gradient(135deg, rgba(232,69,69,0.08), rgba(255,153,0,0.06));
+      border: 1px solid rgba(232,69,69,0.3);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 28px;
+    }
+    .health-box h3 {
+      font-family: 'Playfair Display', serif;
+      color: #ff7070;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .health-box p {
+      font-size: 0.9rem;
+      color: rgba(248,245,239,0.78);
+      line-height: 1.8;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .highlight-box { padding: 24px 20px; }
+      .conclusion { padding: 36px 24px; }
+      .hero-num { width: 60px; height: 60px; }
+      .hero-num .num { font-size: 1.3rem; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="stars" id="stars"></div>
+
+  <div class="hero-badge">✦ Thần Số Học · Pythagoras · Kỳ Môn Độn Giáp ✦</div>
+
+  <h1>Lê Thị Thanh Tình<span>SINH NGÀY 13 / 04 / 1984 · GIỜ MÃO</span></h1>
+  <p class="hero-sub">Báo cáo phân tích cá nhân toàn diện · Số Nghiệp 13/4</p>
+
+  <div class="hero-numbers">
+    <div class="hero-num"><span class="num">13/4</span><span class="lbl">Chủ Đạo</span></div>
+    <div class="hero-num"><span class="num">9</span><span class="lbl">Linh Hồn</span></div>
+    <div class="hero-num"><span class="num">9</span><span class="lbl">Nhân Cách</span></div>
+    <div class="hero-num"><span class="num">9</span><span class="lbl">Xứ Mệnh</span></div>
+    <div class="hero-num"><span class="num">4</span><span class="lbl">Ngày Sinh</span></div>
+    <div class="hero-num"><span class="num">3</span><span class="lbl">Trưởng Thành</span></div>
+    <div class="hero-num"><span class="num">6</span><span class="lbl">Tiềm Thức</span></div>
+    <div class="hero-num"><span class="num">5</span><span class="lbl">Vận Mệnh</span></div>
+  </div>
+
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Cuộn để khám phá
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ 7 CHỈ SỐ CHÍNH ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Phân Tích Cốt Lõi</p>
+    <h2 class="section-title">Các Chỉ Số Chính</h2>
+
+    <div class="cards-grid">
+
+      <!-- Số Chủ Đạo 13/4 -->
+      <div class="card fade-up">
+        <div class="card-number">4</div>
+        <div class="card-icon">⚡</div>
+        <span class="tag">Số Chủ Đạo · Số Nghiệp</span>
+        <h3>Số Chủ Đạo 13/4 — Số Nghiệp</h3>
+        <p>Con số 13/4 giúp tỷ mạng kim vàng ở biển. Là người chủ đạo 3 hành trình cuộc đời của bạn. Số linh hồn 9, điều tam nguyện. Ngày sinh 13/4/1984 (Giờ sinh 5-6h sáng giờ Mão). <strong style="color:var(--gold-light)">Đây là số nghiệp — mang theo bài học lớn từ kiếp trước cần hoàn thành trong kiếp này.</strong></p>
+      </div>
+
+      <!-- Chỉ Số Linh Hồn 9 -->
+      <div class="card fade-up">
+        <div class="card-number">9</div>
+        <div class="card-icon">🌊</div>
+        <span class="tag">Chỉ Số Linh Hồn</span>
+        <h3>Chỉ Số Linh Hồn 9</h3>
+        <p>Là người làm trung tâm của những cuộc vui, ở đâu cũng có thể sống được. Những công việc đề dẫn tới thành công: giải trí, truyền thông, ca hát, lời nói, ngoại giao, ngoại cảm, bán hàng. <strong style="color:var(--gold-light)">Ước mơ trở thành nhà nhân đạo giàu lòng nhân ái.</strong></p>
+      </div>
+
+      <!-- Chỉ Số Nhân Cách 9 -->
+      <div class="card fade-up">
+        <div class="card-number">9</div>
+        <div class="card-icon">✨</div>
+        <span class="tag">Chỉ Số Nhân Cách</span>
+        <h3>Chỉ Số Nhân Cách 9</h3>
+        <p>Trong mắt mọi người, bạn là người lôi cuốn dễ mê và tốt bụng, bạn là người cho đi và không mong cầu nhận lại — nhưng đó là những điều bạn không giải thích được. Bạn có sức hút tự nhiên khiến người khác muốn gần gũi.</p>
+      </div>
+
+      <!-- Chỉ Số Xứ Mệnh 9 -->
+      <div class="card fade-up">
+        <div class="card-number">9</div>
+        <div class="card-icon">🌟</div>
+        <span class="tag">Chỉ Số Xứ Mệnh</span>
+        <h3>Chỉ Số Xứ Mệnh 9</h3>
+        <p>Là con số chỉ mệnh, gắn liền với đường đời về chính mình. Quyết định thành công của cuộc đời bạn. Nhiệm vụ là trở thành nhà nhân đạo giàu lòng nhân ái, vươn qua xu hướng đánh giá người khác và bản thân. <strong style="color:var(--gold-light)">Sứ mệnh phụng sự nhân loại.</strong></p>
+      </div>
+
+      <!-- Chỉ Số Ngày Sinh 4 -->
+      <div class="card fade-up">
+        <div class="card-number">4</div>
+        <div class="card-icon">🏗️</div>
+        <span class="tag">Chỉ Số Ngày Sinh</span>
+        <h3>Chỉ Số Ngày Sinh 4</h3>
+        <p>Có thói quen ngăn nắp, có tổ chức, khéo tay. Hoàn thành tốt những công việc hàng ngày, luôn có tư kiên cường, quyết tâm cao. <strong style="color:var(--gold-light)">Tài năng và khả năng tiềm ẩn bên trong bạn.</strong></p>
+      </div>
+
+      <!-- Chỉ Số Trưởng Thành 3 -->
+      <div class="card fade-up">
+        <div class="card-number">3</div>
+        <div class="card-icon">🎨</div>
+        <span class="tag">Chỉ Số Trưởng Thành</span>
+        <h3>Chỉ Số Trưởng Thành 3</h3>
+        <p>Nên cố gắng sử dụng những mặt tích cực của bản thân, sử dụng khả năng giao tiếp, tài năng sáng tạo của chính mình để khuyến khích, nâng đỡ tinh thần và truyền cảm hứng cho người khác. <strong style="color:var(--gold-light)">Bản mệnh của bạn từ 33 tới 60 tuổi.</strong></p>
+      </div>
+
+      <!-- Sức Mạnh Tiềm Thức 6 -->
+      <div class="card fade-up">
+        <div class="card-number">6</div>
+        <div class="card-icon">❤️</div>
+        <span class="tag">Sức Mạnh Tiềm Thức</span>
+        <h3>Sức Mạnh Tiềm Thức 6</h3>
+        <p>Luôn hướng về gia đình, luôn mong cầu có một gia đình hoàn chỉnh, luôn hy sinh bản thân mình cho gia đình, cho mọi người, con cái. <strong style="color:var(--gold-light)">Chỉ số nội tâm trực giác — động lực sâu thẳm nhất.</strong></p>
+      </div>
+
+      <!-- Chỉ Số Thái Độ 8 -->
+      <div class="card fade-up">
+        <div class="card-number">8</div>
+        <div class="card-icon">💰</div>
+        <span class="tag">Chỉ Số Thái Độ</span>
+        <h3>Chỉ Số Thái Độ 8</h3>
+        <p>8 luôn lắng về mặt vật chất. Xử lý các vấn đề trên cương vị của tiền, tóm lại tiền mọi giải quyết được các vấn đề. Bạn có tư duy thực tế và khả năng quản lý tài chính mạnh mẽ.</p>
+      </div>
+
+      <!-- Số Vận Mệnh 5 -->
+      <div class="card fade-up">
+        <div class="card-number">5</div>
+        <div class="card-icon">🦋</div>
+        <span class="tag">Số Vận Mệnh</span>
+        <h3>Số Vận Mệnh 5</h3>
+        <p>Là người yêu tự do, thích phá những điều mới mẻ, trải nghiệm, nhiều vụ tự do, cảm nhận và truyền cảm hứng chia sẻ hành trình trải nghiệm của mình cho nhiều người. <strong style="color:var(--gold-light)">Sống là trải nghiệm và chia sẻ.</strong></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CHỈ SỐ TÊN & CÔ LẬP ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Điểm Đặc Biệt</p>
+    <h2 class="section-title">Chỉ Số Tên & Số Cô Lập</h2>
+
+    <div class="kymon-grid">
+      <div class="highlight-box fade-up">
+        <h3>🏆 Chỉ Số Tên 5 — Cung Cấp Điểm Mạnh</h3>
+        <p>Bạn thuộc người thích mạo hiểm, phù hợp và rất có năng lực trong lĩnh vực kinh doanh quảng cáo, truyền đạt, thông điệp cho người xung quanh mình. Đây là bài học kinh nghiệm và điểm mạnh cốt lõi của bạn.</p>
+      </div>
+
+      <div class="highlight-box fade-up">
+        <h3>🔵 Số Cô Lập 3 — Điểm Cần Chú Ý</h3>
+        <p>Hay mắc những chứng bệnh về ảo tưởng, suy nghĩ viễn vông không thực tế trong đời sống. Cần sống tích cực hơn, suy nghĩ lạc quan hơn.</p>
+        <br/>
+        <p style="color:var(--gold-light);font-style:italic">Số cô lập không phải là số không tốt — khi mình nhìn vào số để mình thay đổi và bù đắp cho những điểm khuyết trong cuộc đời mình.</p>
+      </div>
+    </div>
+
+    <!-- Năm Cá Nhân -->
+    <div class="highlight-box fade-up" style="background: linear-gradient(135deg, rgba(155,93,229,0.1), rgba(0,180,216,0.06)); border-color: rgba(155,93,229,0.35);">
+      <h3 style="color:#c084fc">✨ Chỉ Số Năm Cá Nhân 9 — Năm Hoàn Thiện & Kết Thúc</h3>
+      <p>Đây là năm của sự hoàn thiện và kết thúc. Bạn có thể nhận thấy rằng có nhiều cơ hội để hoàn thiện dự án hoặc đánh giá lại những chu kỳ cũ trong năm nay, tạo cơ hội cho sự tái sinh và đổi mới trong cuộc sống. <strong style="color:#c084fc">Đây là năm để buông bỏ những gì không còn phù hợp và chuẩn bị cho chu kỳ mới.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SỐ KHUYẾT & SỐ THIẾU ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Điểm Cần Bổ Sung</p>
+    <h2 class="section-title">Số Khuyết & Số Thiếu</h2>
+
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-icon">⚠️</div>
+        <span class="tag" style="border-color:rgba(232,69,69,0.4);background:rgba(232,69,69,0.1);color:#ff7070">Số Khuyết</span>
+        <h3>Số Khuyết 3 – 5 – 7</h3>
+        <p>Số khuyết trong biểu đồ ngày sinh cho thấy người này hay bị mất phương hướng, chưa sâu sắc về vấn đề tâm linh, tính cách hơi đa nghi đa sầu, hay hoài nghi vô cớ, hay lo lắng muộn phiền, hay lo xa.</p>
+        <br/>
+        <p style="color:var(--emerald);font-size:0.85rem"><strong>Giải pháp:</strong> Thay đổi cách suy nghĩ tích cực lạc quan, lối sống, tập thể dục, yoga, hoặc bơi lội thư giãn hơn.</p>
+      </div>
+
+      <div class="card fade-up">
+        <div class="card-icon">🔍</div>
+        <span class="tag" style="border-color:rgba(232,69,69,0.4);background:rgba(232,69,69,0.1);color:#ff7070">Thiếu Số 2</span>
+        <h3>Thiếu Số 2 — Trực Giác & Nhạy Cảm</h3>
+        <p>Cho thấy thiếu trực giác tự nhiên và sự nhạy cảm. Bạn có thể thấy khó kết nối cảm xúc. <strong style="color:var(--gold-light)">Giải pháp:</strong> Phát triển mặt trực giác thông qua thiền định và suy ngẫm yên tĩnh. Thực hành sự đồng cảm và lắng nghe tích cực.</p>
+      </div>
+
+      <div class="card fade-up">
+        <div class="card-icon">🎭</div>
+        <span class="tag" style="border-color:rgba(232,69,69,0.4);background:rgba(232,69,69,0.1);color:#ff7070">Thiếu Số 5</span>
+        <h3>Thiếu Số 5 — Kiểm Soát Cảm Xúc</h3>
+        <p>Cho thấy thiếu kiểm soát cảm xúc và khó hiểu cảm xúc. Biết đặt cảm xúc có thể thật khó xử. <strong style="color:var(--gold-light)">Giải pháp:</strong> Thực hành nhận thức cảm xúc qua việc nhật ký. Tham gia các hoạt động kết nối bản thân với cảm xúc.</p>
+      </div>
+
+      <div class="card fade-up">
+        <div class="card-icon">🏠</div>
+        <span class="tag" style="border-color:rgba(232,69,69,0.4);background:rgba(232,69,69,0.1);color:#ff7070">Thiếu Số 6</span>
+        <h3>Thiếu Số 6 — Gia Đình & Thực Tế</h3>
+        <p>Cho thấy thiếu thực tế trong việc tích cực về gia đình và đóng góp. Thường gia đình có thể cảm thấy khó quá tải. <strong style="color:var(--gold-light)">Giải pháp:</strong> Cân bằng chăm sóc người khác với tự chăm sóc bản thân.</p>
+      </div>
+
+      <div class="card fade-up">
+        <div class="card-icon">🎓</div>
+        <span class="tag" style="border-color:rgba(232,69,69,0.4);background:rgba(232,69,69,0.1);color:#ff7070">Thiếu Số 7</span>
+        <h3>Thiếu Số 7 — Bài Học Hy Sinh</h3>
+        <p>Cho thấy bạn phải học bài học thông qua hy sinh cá nhân và kinh nghiệm. Đây là con đường phát triển tâm linh và trí tuệ sâu sắc nhất của bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ BÀI HỌC CUỘC ĐỜI ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Nhân Quả & Hành Trình</p>
+    <h2 class="section-title">Bài Học Cuộc Đời 4-6-7 (Nhân Quả Kiếp Trước)</h2>
+
+    <div class="advice-grid">
+      <div class="advice-item warning fade-up">
+        <h4>⚠️ Kỷ Luật & Tập Trung</h4>
+        <p>Cần học những cảm thông với người khác nhiều hơn, kỷ luật và tập trung hơn trong mọi việc làm.</p>
+      </div>
+      <div class="advice-item warning fade-up">
+        <h4>⚠️ Đầu Tư Cho Gia Đình</h4>
+        <p>Học cách đầu tư và dành nhiều thời gian cho gia đình đến con cái. Cần tạo ra các mối quan hệ tích cực trong gia đình cộng đồng.</p>
+      </div>
+      <div class="advice-item positive fade-up">
+        <h4>✅ Tâm Linh & Biết Ơn</h4>
+        <p>Nên học cách biết ơn tổ tiên, nên đọc kinh niệm phật, đi chùa cúng đức. Phát triển lòng biết ơn về nguồn cội.</p>
+      </div>
+      <div class="advice-item positive fade-up">
+        <h4>✅ Phụng Sự Cộng Đồng</h4>
+        <p>2026 nên tập trung vào phụng sự và theo đuổi các mục đích nhân đạo. Chung tay hỗ trợ tổ chức từ thiện cá nhân gia đình.</p>
+      </div>
+      <div class="advice-item violet fade-up">
+        <h4>💜 Truyền Cảm Hứng</h4>
+        <p>Từ 33 tuổi, bình yên hơn, tích bình đi phát triển và tài linh, là người truyền cảm hứng và chữa lành cho người khác.</p>
+      </div>
+      <div class="advice-item sky fade-up">
+        <h4>🔵 Kinh Doanh & Tài Chính</h4>
+        <p>Vận trình từ năm 33-51 tuổi: cần tính toán về tiền bạc, hợp tác tài chính, kinh doanh buôn bán thận trọng, lên kế hoạch đầu tư rõ ràng, cần kiểm soát về tài chính.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ VẬN TRÌNH CUỘC ĐỜI ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Lộ Trình Thời Gian</p>
+    <h2 class="section-title">Tổng Kết Vận Trình Cuộc Đời</h2>
+
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <h4>Giai Đoạn Trước 33 Tuổi — Áp Lực & Bước Ngoặt</h4>
+        <p>Dưới 33 tuổi sẽ phải gặp mọi vấn đề về áp lực nội tâm — đó là trở ngại và bước ngoặt để thành đổi cuộc đời bạn. Đây là giai đoạn tôi luyện bản thân, xây dựng nền tảng cho tương lai.</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <h4>Giai Đoạn 33–51 Tuổi — Xây Dựng & Phát Triển</h4>
+        <p>Cần tính toán về tiền bạc, hợp tác tài chính, kinh doanh buôn bán thận trọng. Lên kế hoạch đầu tư rõ ràng, cần kiểm soát về tài chính. Đây là thời gian xây dựng nền tảng vững chắc cho sự nghiệp và gia đình.</p>
+      </div>
+      <div class="timeline-item fade-up">
+        <h4>Giai Đoạn Trưởng Thành (33–60 Tuổi) — Toả Sáng</h4>
+        <p>Nên cố gắng sử dụng những mặt tích cực của bản thân, sử dụng khả năng giao tiếp và tài năng sáng tạo để khuyến khích, nâng đỡ tinh thần và truyền cảm hứng cho người khác. <strong style="color:var(--gold-light)">Đây là giai đoạn toả sáng rực rỡ nhất.</strong></p>
+      </div>
+      <div class="timeline-item fade-up">
+        <h4>Giai Đoạn 2026 — Năm Vàng Của Động Lực</h4>
+        <p>2026 là lựa chọn ưu việt để kiếm tiền và bắt đầu kinh doanh mới. Nên tập trung vào phụng sự và theo đuổi các mục đích nhân đạo. <strong style="color:var(--emerald)">Năm tốt nhất để hành động và tạo ra sự thay đổi.</strong></p>
+      </div>
+      <div class="timeline-item fade-up">
+        <h4>Tương Lai — Nhà Nhân Đạo Giàu Lòng Nhân Ái</h4>
+        <p>Đang hướng tới việc trở thành một nhà nhân đạo giàu lòng nhân ái, mục tiêu là phát triển trong lĩnh vực kinh doanh, sự hiểu biết và lòng chăm sóc, an toàn, sẵn sàng với cuộc đời. <strong style="color:var(--gold-light)">Một tương lai viên mãn đang chờ đón.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ KỲ MÔN ĐỘN GIÁP ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Phân Tích Chuyên Sâu</p>
+    <h2 class="section-title">Kỳ Môn Độn Giáp — Phân Tích Năm 2026 & 2027</h2>
+
+    <div class="highlight-box fade-up" style="margin-bottom: 32px;">
+      <h3>📋 Thông Tin Nền Tảng</h3>
+      <p><strong style="color:var(--gold-light)">Lê Thị Thanh Tình</strong> — Thiên can năm sinh: <strong style="color:var(--amber)">Mậu (戊)</strong> · Địa chi năm sinh: <strong style="color:var(--amber)">Tý (子)</strong></p>
+      <p style="margin-top: 12px;">Dựa trên các nguyên lý Kỳ Môn Độn Giáp từ các nguồn tài liệu, việc lựa chọn giữa năm 2026 và 2027 phụ thuộc vào việc cô ấy ưu tiên sự phát triển nhanh chóng hay sự ổn định lâu dài.</p>
+    </div>
+
+    <!-- Year Comparison -->
+    <div class="year-cards">
+      <div class="year-card year-2026 fade-up">
+        <h3>🌟 Năm 2026 — Động Lực & Lợi Nhuận</h3>
+        <ul>
+          <li><strong>Quan hệ Tương sinh:</strong> Năm Bính Ngọ (丙午) — Hỏa sinh Thổ (năng lượng cá nhân), hỗ trợ cao nhất</li>
+          <li><strong>Tăng trưởng Tài chính:</strong> Tạo hiệu ứng "Sinh" mạnh mẽ cho Sinh Môn (Lợi nhuận) và Khai Môn (Sự nghiệp)</li>
+          <li><strong>Năng lượng Đỉnh cao:</strong> Hỏa đạt trạng thái "Vượng" tối đa trong năm Ngọ</li>
+          <li><strong>Tháng 8/2026:</strong> Tận dụng "Cách cục trở về" — thời điểm vàng để hành động</li>
+          <li><strong>Tránh Tương hại:</strong> Xây dựng nền tảng vững chắc trước khi Tý-Mùi bắt đầu</li>
+        </ul>
+      </div>
+      <div class="year-card year-2027 fade-up">
+        <h3>💜 Năm 2027 — Quý Nhân & Củng Cố</h3>
+        <ul>
+          <li><strong>Đinh Nhâm (Tinh Kỳ):</strong> Cát tường để tìm kiếm "Quý nhân" trong hành chính hoặc pháp lý</li>
+          <li><strong>Xung đột Nội bộ:</strong> Tương hại Tý-Mùi — tổn thương ngầm, căng thẳng gia đình nội bộ</li>
+          <li><strong>Sức khỏe:</strong> Áp lực lên hệ tiêu hóa (Dạ dày/Lá lách) do dư thừa Thổ</li>
+          <li><strong>Tháng 10/2027:</strong> Tháng Canh Tuất — "Nguyệt Cách" thúc đẩy trở về nguồn cội</li>
+          <li><strong>Ổn định hơn Tăng trưởng:</strong> Phù hợp giữ vững vị trí, hoàn thiện dự án hiện tại</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider fade-up">✦ Phân Tích Chi Tiết ✦</div>
+
+    <div class="kymon-grid">
+      <div class="kymon-card fade-up">
+        <h4><span>⚔️</span> Niên Cách (年格) — Sức Mạnh Của Canh (庚)</h4>
+        <p>Trong Kỳ Môn Độn Giáp, sự di chuyển và trở về của người đi xa thường được dự báo thông qua thiên can Canh (庚), biểu tượng cho các rào cản, sự cản trở hoặc năng lượng mang tính "thúc ép" để đưa một sự việc đến hồi kết. Tháng 10 năm 2027 là tháng Canh (庚), tạo ra "Nguyệt Cách" — cách cục trở về.</p>
+      </div>
+      <div class="kymon-card fade-up">
+        <h4><span>☯️</span> Tương Tác Tý-Mùi: "Lục Hại" (六害)</h4>
+        <p>Lê Thị Thanh Tình sinh năm 1984, năm Tý (子). Năm 2027 là năm Mùi (未). Tý và Mùi nằm trong mối quan hệ "Tương hại" (相害) — đại diện cho những tổn thương ngầm, sự ma sát hoặc căng thẳng nội bộ thay vì một sự xung đột trực diện.</p>
+      </div>
+      <div class="kymon-card fade-up">
+        <h4><span>🔥</span> Năng Lượng Mậu Thổ & Hỏa 2026</h4>
+        <p>Thiên can Mậu (戊) gắn liền với dạ dày và lá lách. Năm 2026 (Bính Ngọ), Hỏa sinh Thổ — mang lại sự hỗ trợ ngũ hành mạnh mẽ nhất cho năng lượng Mậu Thổ của cô ấy. Đây là môi trường lý tưởng để phát triển và kiếm tiền.</p>
+      </div>
+      <div class="kymon-card fade-up">
+        <h4><span>🏆</span> Khuyến Nghị Chiến Lược</h4>
+        <p>Năm 2026 tốt hơn cho một sự chuyển giao thành công. Nó mang lại sự hỗ trợ ngũ hành mạnh mẽ nhất cho năng lượng Mậu Thổ của cô ấy, cung cấp động lực tốt nhất để kiếm tiền, và tránh được những rủi ro về sức khỏe cũng như sự "Tương hại" ngầm gắn liền với năm 2027.</p>
+      </div>
+    </div>
+
+    <!-- Health Warning -->
+    <div class="health-box fade-up">
+      <h3>🩺 Lưu Ý Sức Khoẻ Quan Trọng</h3>
+      <p>Chỉ số sức khoẻ cho thấy bạn hay mắc những cái bệnh về <strong style="color:#ff7070">gan, mắt, tích tự mổ, phần thân dưới, dây thần kinh</strong>, hay bị thương về da. <strong style="color:var(--gold-light)">Chú ý đặc biệt các năm: 12, 21, 39, 48, 57 tuổi.</strong> Trong năm 2027, cần chú ý hệ tiêu hóa (Dạ dày/Lá lách) do ảnh hưởng của Tương hại Tý-Mùi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TÓM TẮT CỤC DIỆN ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Tổng Hợp Kỳ Môn</p>
+    <h2 class="section-title">Tóm Tắt Cục Diện & Định Hướng</h2>
+
+    <div class="advice-grid">
+      <div class="advice-item positive fade-up">
+        <h4>✅ Năm 2026 — Hành Động Ngay</h4>
+        <p>Niên Cách vào tháng 10 năm 2027 tạo ra lực đẩy bên ngoài để trở về nhà. Bằng cách hành động từ năm 2026, cô ấy tận dụng năng lượng Đinh Hỏa để hỗ trợ cho Mậu Thổ của mình.</p>
+      </div>
+      <div class="advice-item positive fade-up">
+        <h4>✅ Kiếm Tiền & Kinh Doanh</h4>
+        <p>2026 cung cấp động lực tốt nhất để kiếm tiền và bắt đầu kinh doanh mới. Hỏa sinh Thổ — môi trường hỗ trợ ở mức cao nhất.</p>
+      </div>
+      <div class="advice-item warning fade-up">
+        <h4>⚠️ Tránh Rủi Ro 2027</h4>
+        <p>Tránh được những rủi ro về sức khỏe cũng như sự "Tương hại" ngầm gắn liền với năm Mùi 2027. Bảo vệ hệ tiêu hóa và tránh căng thẳng nội bộ.</p>
+      </div>
+      <div class="advice-item violet fade-up">
+        <h4>💜 Quý Nhân Phù Trợ</h4>
+        <p>Năm 2027 có Đinh Nhâm (Tinh Kỳ) — cát tường để tìm kiếm quý nhân, người cố vấn giúp đỡ trong các vấn đề hành chính hoặc pháp lý.</p>
+      </div>
+      <div class="advice-item sky fade-up">
+        <h4>🔵 Tháng 8/2026 — Thời Điểm Vàng</h4>
+        <p>Tháng 8 năm 2026 là tháng Canh — tận dụng "Cách cục trở về" để hoàn thành hành trình trong giai đoạn năng lượng được hỗ trợ tự nhiên bởi Hỏa của năm.</p>
+      </div>
+      <div class="advice-item fade-up">
+        <h4>📅 Lựa Chọn Chiến Lược</h4>
+        <p>Việc lựa chọn giữa 2026 và 2027 phụ thuộc vào ưu tiên: <strong style="color:var(--gold-light)">Phát triển nhanh chóng → 2026</strong> | <strong style="color:#c084fc">Ổn định lâu dài → 2027</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ KẾT LUẬN ═══════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="conclusion fade-up">
+      <h2>✦ Kết Luận Tổng Hợp ✦</h2>
+      <p>Theo các nguồn tài liệu, <strong>Lê Thị Thanh Tình</strong> là người mang số nghiệp 13/4 — một con số đặc biệt mang theo bài học lớn từ kiếp trước cần hoàn thành trong kiếp này. Với bộ ba số 9 (Linh Hồn, Nhân Cách, Xứ Mệnh), cô ấy có sứ mệnh trở thành nhà nhân đạo giàu lòng nhân ái, góp phần làm cho thế giới tốt đẹp hơn.</p>
+      <p>Giai đoạn từ <strong style="color:var(--gold-light)">33 đến 60 tuổi</strong> là thời kỳ toả sáng rực rỡ nhất — sử dụng khả năng giao tiếp và tài năng sáng tạo để truyền cảm hứng cho người khác. Năm <strong style="color:var(--emerald)">2026</strong> là thời điểm vàng để hành động, kiếm tiền và tạo ra sự thay đổi tích cực.</p>
+      <p>Với sức mạnh tiềm thức số 6 luôn hướng về gia đình, và vận mệnh số 5 yêu tự do và trải nghiệm, cô ấy sẽ tìm thấy sự cân bằng hoàn hảo giữa gia đình và sự nghiệp. <strong style="color:var(--gold-light)">Một tương lai viên mãn, sung túc và đầy ý nghĩa đang chờ đón phía trước.</strong></p>
+      <p style="font-size:0.82rem;color:rgba(248,245,239,0.4);margin-top:28px">Báo cáo được lập dựa trên hệ thống Thần Số Học Pythagoras và Kỳ Môn Độn Giáp · Bộ số lấy từ tài liệu của Nhà Toán Học Pythagoras</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© Báo Cáo Thần Số Học · Lê Thị Thanh Tình · Sinh 13/04/1984 · Số Nghiệp 13/4 · Được tạo bởi hệ thống phân tích số học Pythagoras & Kỳ Môn Độn Giáp</p>
+</footer>
+
+<script>
+  // Generate stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 100; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top  = Math.random() * 100 + '%';
+    s.style.animationDelay = (Math.random() * 4) + 's';
+    s.style.animationDuration = (2 + Math.random() * 3) + 's';
+    s.style.width = (Math.random() > 0.7 ? 3 : 2) + 'px';
+    s.style.height = s.style.width;
+    starsEl.appendChild(s);
+  }
+
+  // Intersection Observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
